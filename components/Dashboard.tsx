@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TreeData, User, AccessLevel } from '../types';
-import { Search, Plus, Clock, User as UserIcon, Shield, LogOut, Moon, Sun, FolderOpen, MoreVertical, Trash2, X, Settings, LogIn } from 'lucide-react';
-import {  } from '../services/api'; 
+import { Search, Plus, Clock, User as UserIcon, Shield, LogOut, Moon, Sun, FolderOpen, MoreVertical, Trash2, X, Settings, LogIn } from 'lucide-react'; 
 
 interface DashboardProps {
   user: User;

@@ -380,7 +380,7 @@ const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
            <svg width="32" height="12" viewBox="0 0 32 12" className="overflow-visible">
                <path d="M0,10 C16,10 16,0 32,0" fill="none" stroke={isDarkMode ? "#94a3b8" : "#64748b"} strokeWidth="2" markerEnd="url(#arrowhead)"/>
            </svg>
-           <span className="text-gray-600 dark:text-gray-400">Родитель -> Ребенок</span>
+           <span className="text-gray-600 dark:text-gray-400">Родитель → Ребенок</span>
          </div>
 
          <div 

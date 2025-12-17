@@ -1,13 +1,23 @@
-import { GoogleGenAI } from "@google/genai";
 import { Person } from "../types";
 
-// Ensure API Key is available
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
+/**
+ * Generic AI Service for biography generation
+ * 
+ * To integrate your own AI provider or backend:
+ * 1. Implement the generateBiography function with your API client
+ * 2. Update the API_ENDPOINT and authentication as needed
+ * 3. Modify the prompt if using a different AI model
+ * 
+ * Example providers:
+ * - OpenAI API (ChatGPT)
+ * - Anthropic API (Claude)
+ * - Your custom backend API
+ * - Other LLM providers
+ */
+
+const API_ENDPOINT = import.meta.env.VITE_AI_ENDPOINT || 'http://localhost:3000/api/generate-biography';
 
 export const generateBiography = async (person: Person): Promise<string> => {
-  if (!apiKey) throw new Error("API Key is missing");
-
   const prompt = `
     Напиши краткую, но интересную биографию для генеалогического древа на русском языке в формате Markdown.
     Используй следующие факты (если они есть):
@@ -28,21 +38,29 @@ export const generateBiography = async (person: Person): Promise<string> => {
   `;
 
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
+    // Send request to your backend or AI provider
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt, person }),
     });
-    return response.text || '';
+
+    if (!response.ok) {
+      throw new Error(`AI API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.biography || '';
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("Biography generation error:", error);
     throw error;
   }
 };
 
 export const suggestRelationships = async (text: string): Promise<any> => {
-  if (!apiKey) throw new Error("API Key is missing");
   // This could be used to parse a text dump into a family structure
-  // Implementation omitted for brevity in this specific requested feature set, 
-  // but keeping the structure ready.
+  // Implement with your backend API
   return null;
 };

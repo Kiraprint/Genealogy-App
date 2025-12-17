@@ -58,7 +58,7 @@ const EditorPanel: React.FC<EditorPanelProps> = ({
       setFormData(updated);
       onUpdate(updated);
     } catch (e) {
-      alert("Ошибка при генерации биографии. Проверьте API Key.");
+      alert("Ошибка при генерации биографии. Убедитесь, что ваш AI сервис настроен и работает (VITE_AI_ENDPOINT).");
     } finally {
       setIsGenerating(false);
     }

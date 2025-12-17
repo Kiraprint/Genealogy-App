@@ -1,20 +1,78 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Genealogy App
 
-# Run and deploy your AI Studio app
+A flexible genealogy tree application with support for custom AI providers and backends.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/1rD4VOhfOD4sySJsdRwNfirWRJl-hs-Bw
+- Build and visualize family trees
+- Edit person details and relationships
+- Support for custom AI biography generation
+- Share family trees with access controls
+- Mock backend with localStorage for demo mode
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisites:** Node.js
 
+### Setup
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+   ```bash
+   npm install
+   ```
+
+2. (Optional) Configure AI Biography Generation
+
+   To enable AI biography generation, set the `VITE_AI_ENDPOINT` in `.env.local`:
+   
+   ```env
+   VITE_AI_ENDPOINT=http://your-backend.com/api/generate-biography
+   ```
+
+   The endpoint should accept POST requests with this payload:
+   ```json
+   {
+     "prompt": "biography generation prompt",
+     "person": { "firstName": "...", "lastName": "...", "birthDate": "...", ... }
+   }
+   ```
+
+   And return:
+   ```json
+   {
+     "biography": "generated biography text in markdown"
+   }
+   ```
+
+   **Supported providers:**
+   - Your custom backend API
+   - OpenAI API (ChatGPT)
+   - Anthropic API (Claude)
+   - Other LLM providers
+
 3. Run the app:
-   `npm run dev`
+   ```bash
+   npm run dev
+   ```
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## Architecture
+
+- **Frontend:** React + TypeScript with D3 for tree visualization
+- **Backend:** Mock implementation using localStorage (can be replaced)
+- **AI Service:** Generic implementation supporting any provider via HTTP endpoint
+
+## Customization
+
+### Using Your Own Backend
+
+Edit [services/api.ts](services/api.ts) to replace the mock backend with your API calls.
+
+### Integrating a Different AI Provider
+
+Update [services/geminiService.ts](services/geminiService.ts) with your AI provider's client library and endpoint.
