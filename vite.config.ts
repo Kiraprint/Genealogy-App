@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode, command }) => {
     const isProd = mode === 'production' || command === 'build';
     return {
-      base: isProd ? '/Geneology-App/' : '/',
+      base: isProd ? './' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
