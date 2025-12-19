@@ -1,11 +1,11 @@
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
+export default defineConfig(({ mode, command }) => {
+    const isProd = mode === 'production' || command === 'build';
     return {
-      base: env.NODE_ENV === 'production' ? '/Geneology-App/' : '/',
+      base: isProd ? '/Geneology-App/' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
