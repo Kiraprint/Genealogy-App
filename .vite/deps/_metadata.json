@@ -1,0 +1,52 @@
+{
+  "hash": "db201711",
+  "configHash": "1f42f495",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "450b2f1d",
+  "optimized": {
+    "d3": {
+      "src": "../../frontend/node_modules/d3/src/index.js",
+      "file": "d3.js",
+      "fileHash": "c3c0ad0f",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../frontend/node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "50bb7b97",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../frontend/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "caba57cf",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../frontend/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "2b56fb47",
+      "needsInterop": true
+    },
+    "react-markdown": {
+      "src": "../../frontend/node_modules/react-markdown/index.js",
+      "file": "react-markdown.js",
+      "fileHash": "7c35e5c5",
+      "needsInterop": false
+    },
+    "uuid": {
+      "src": "../../frontend/node_modules/uuid/dist/index.js",
+      "file": "uuid.js",
+      "fileHash": "11011b7e",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-CQNDQ5W2": {
+      "file": "chunk-CQNDQ5W2.js"
+    },
+    "chunk-DC5AMYBS": {
+      "file": "chunk-DC5AMYBS.js"
+    }
+  }
+}
